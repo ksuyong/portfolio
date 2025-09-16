@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
   return (
@@ -84,8 +83,8 @@ const Home: React.FC = () => {
         <section className="contact-info">
           <h2>Contact</h2>
           <p>📧 이메일: kimsy5026@gmail.com</p>
-          <p>🐱 GitHub: <a href="https://github.com/ksuyong" target="_blank"> https://github.com/ksuyong</a> </p>
-          <p>💼 Blog: <a href="https://ksuyong91.tistory.com" target="_blank"> https://ksuyong91.tistory.com</a> </p>
+          <p>🐱 GitHub: <a href="https://github.com/ksuyong" target="_blank" rel="noreferrer"> https://github.com/ksuyong</a> </p>
+          <p>💼 Blog: <a href="https://ksuyong91.tistory.com" target="_blank" rel="noreferrer"> https://ksuyong91.tistory.com</a> </p>
         </section>
       </div>
     </div>
