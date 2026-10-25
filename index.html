@@ -4,156 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Java / Spring 백엔드 개발자 수용의 포트폴리오">
-<title>Suyong Backend Portfolio</title>
+<meta name="robots" content="noindex, nofollow">
+<title>Suyong Kim's Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
-<style>
-*,*::before,*::after{box-sizing:border-box}
-body{margin:0}
-img{max-width:100%}
-/* Layout: 한 페이지 스크롤 이력서형 — 상단 고정 앵커 메뉴, 섹션은 좌측 라벨 + 우측 본문 2단, 프로젝트는 '수행 업무 / 주요 성과 / Skills' 고정 템플릿 */
-:root{
-  --bg:#F5F6F8; --surface:#FFFFFF; --ink:#141824; --muted:#5E6577; --line:#DDE1E8;
-  --accent:#2747C9; --accent-soft:#E7ECFB; --code-bg:#EEF0F4;
-  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
-  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0F121A; --surface:#171B26; --ink:#E6E9F0; --muted:#9AA2B4; --line:#2A3042;
-  --accent:#8DA4FF; --accent-soft:#1E2747; --code-bg:#1C2130; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0F121A; --surface:#171B26; --ink:#E6E9F0; --muted:#9AA2B4; --line:#2A3042;
-  --accent:#8DA4FF; --accent-soft:#1E2747; --code-bg:#1C2130; color-scheme:dark}
-
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.7}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
-h1,h2,h3,h4{margin:0;line-height:1.3;text-wrap:balance}
-p{margin:0}
-ul{margin:0;padding-left:18px}
-a{color:var(--accent)}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.mono{font-family:var(--f-mono)}
-
-/* Nav */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
-.nav-inner{max-width:1040px;margin:0 auto;display:flex;align-items:center;gap:24px;
-  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
-.brand{font-family:var(--f-mono);font-weight:600;font-size:14px;color:var(--ink);text-decoration:none;white-space:nowrap;padding-block:14px}
-.menu{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;min-width:0}
-.menu::-webkit-scrollbar{display:none}
-.menu a{font-size:13.5px;color:var(--muted);text-decoration:none;padding:14px 10px;white-space:nowrap}
-.menu a:hover{color:var(--accent)}
-
-.page{max-width:1040px;margin:0 auto;padding-block:48px 80px;
-  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
-
-/* Hero */
-.about{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;padding-bottom:48px;border-bottom:1px solid var(--line)}
-.about > *{min-width:0}
-.avatar{width:132px;height:132px;border-radius:50%;background:var(--accent);color:var(--surface);display:grid;place-items:center;
-  font-family:var(--f-mono);font-size:40px;font-weight:600;letter-spacing:-.02em}
-.about h1{font-size:clamp(28px,4.4vw,40px);font-weight:700}
-.about h1 .smile{color:var(--accent)}
-.about .contact{font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:6px}
-.about .intro{margin-top:16px;display:grid;gap:6px;max-width:40em}
-.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.links a{font-family:var(--f-mono);font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:4px;padding:5px 12px;color:var(--ink);background:var(--surface)}
-.links a:hover{border-color:var(--accent);color:var(--accent)}
-
-/* Sections */
-.sec{display:grid;grid-template-columns:200px 1fr;gap:32px;padding-block:48px;border-bottom:1px solid var(--line);scroll-margin-top:56px}
-.sec > *{min-width:0}
-.sec-label{display:grid;gap:2px;align-content:start;position:sticky;top:72px}
-.sec-label h2{font-size:22px}
-.sec-label span{font-size:13px;color:var(--muted)}
-.stack{display:grid;gap:20px}
-
-/* Entries (education, cert) */
-.entry{display:grid;grid-template-columns:1fr auto;gap:4px 16px;align-items:baseline}
-.entry > *{min-width:0}
-.entry h3{font-size:17px}
-.entry .when{font-family:var(--f-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
-.entry .sub{grid-column:1 / -1;color:var(--muted);font-size:14.5px}
-.todo{color:var(--accent);font-family:var(--f-mono);font-size:13px}
-
-/* Experience / project template */
-.company{display:grid;gap:18px}
-.company-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px 16px}
-.company-head h3{font-size:20px}
-.company-head .role{color:var(--muted);font-size:14.5px;margin-left:8px;font-weight:400}
-.when{font-family:var(--f-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:22px;display:grid;gap:16px}
-.card h4{font-size:16.5px}
-.card .card-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 16px;align-items:baseline}
-.field{display:grid;grid-template-columns:96px 1fr;gap:12px}
-.field > *{min-width:0}
-.field .k{font-size:13px;font-weight:700;color:var(--accent);padding-top:2px}
-.field ul{display:grid;gap:3px;font-size:15px}
-.tree{font-family:var(--f-mono);font-size:13px;background:var(--code-bg);border-radius:6px;padding:12px 14px;overflow-x:auto;white-space:pre;line-height:1.75;margin:0}
-.skills-line{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
-
-/* Projects */
-.project{display:grid;gap:18px}
-.project-head{display:grid;gap:6px}
-.project-head .no{font-family:var(--f-mono);font-size:13px;color:var(--accent)}
-.project-head h3{font-size:22px}
-.project-head p{color:var(--muted);max-width:44em}
-.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.meta div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px;min-width:0}
-.meta .mk{font-size:12px;color:var(--muted);display:block}
-.meta .mv{font-size:14.5px;font-weight:500}
-.highlights{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.hl{border-top:2px solid var(--accent);padding-top:10px;display:grid;gap:4px;min-width:0}
-.hl strong{font-size:15px}
-.hl p{font-size:14px;color:var(--muted)}
-.trouble{background:var(--accent-soft);border-radius:8px;padding:18px 20px;display:grid;gap:8px}
-.trouble .tk{font-size:13px;font-weight:700;color:var(--accent)}
-.trouble p{font-size:15px}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-family:var(--f-mono);font-size:12px;padding:3px 9px;border-radius:4px;background:var(--surface);border:1px solid var(--line);white-space:nowrap}
-
-/* Curriculum */
-.course-list{display:grid;gap:0}
-.course{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding-block:14px;border-bottom:1px dashed var(--line)}
-.course:first-child{padding-top:0}
-.course > *{min-width:0}
-.course h3{font-size:16px;font-weight:500}
-.course .badge{font-family:var(--f-mono);font-size:12px;color:var(--accent);white-space:nowrap}
-.course p{grid-column:1 / -1;font-size:14px;color:var(--muted)}
-
-/* Skills */
-.skill-grid{display:grid;gap:22px}
-.skill-row{display:grid;grid-template-columns:110px 1fr;gap:16px}
-.skill-row > *{min-width:0}
-.skill-row h3{font-size:14px;color:var(--muted);font-weight:500;padding-top:3px}
-.skill-row ul{list-style:none;padding:0;display:grid;gap:6px}
-.skill-row li{font-size:15px}
-.skill-row li b{font-family:var(--f-mono);font-size:13.5px;font-weight:600;color:var(--ink);margin-right:8px}
-
-/* Contact */
-.contact-box{display:grid;gap:10px}
-.contact-item{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.contact-item .k{font-size:13px;color:var(--muted);width:72px}
-.contact-item .v{font-family:var(--f-mono);font-size:15px;user-select:all}
-footer{padding-top:32px;font-size:13px;color:var(--muted)}
-
-@media (max-width:820px){
-  .sec{grid-template-columns:1fr;gap:20px;padding-block:40px}
-  .sec-label{position:static}
-  .meta{grid-template-columns:1fr}
-  .highlights{grid-template-columns:1fr}
-}
-@media (max-width:560px){
-  .about{grid-template-columns:1fr;gap:20px}
-  .avatar{width:96px;height:96px;font-size:30px}
-  .field{grid-template-columns:1fr;gap:4px}
-  .skill-row{grid-template-columns:1fr;gap:6px}
-  .card{padding:18px}
-}
-</style>
+<link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
@@ -183,7 +39,7 @@ footer{padding-top:32px;font-size:13px;color:var(--muted)}
   <header class="about" id="about">
     <div class="avatar" aria-hidden="true">SY</div>
     <div>
-      <h1>SUYONG <span class="smile">:)</span></h1>
+      <h1>김 수용</h1>
       <div class="contact">
         <span>📞 [연락처 입력]</span><span>✉ [이메일 입력]</span><span>[거주지 입력]</span>
       </div>
